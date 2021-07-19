@@ -163,9 +163,8 @@ Now the API is ready to receive requests and it’s available on <http://localho
 
 If you have the docker desktop installed in your machine you can execute the following commands to get the application running:
 
-See more on https://docs.docker.com/desktop/
-
 **./mvnw install**
+See more on https://docs.docker.com/desktop/
 
 After maven command completes its execution, build the image with the following command:
 
