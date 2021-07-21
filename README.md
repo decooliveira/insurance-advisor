@@ -171,3 +171,9 @@ This strategy pattern makes simple adding new strategies for new insurance lines
 All the insurance rules are represented by "Rule Objects". The goal is to achieve some level of code reuse since any service can instantiate any given rule and execute it.
 However, in a real application should be more abstract and less coupled
   
+### Thins to improve ###
+
+- Segregate interfaces by insurance line
+- Add logs
+- Increase tests coverage
+- Improve tests design
