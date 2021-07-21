@@ -26,6 +26,7 @@ Optionally, download the code from https://github.com/decooliveira/insurance-adv
 
 
 Install  with **Maven**
+
 Once the source code is downloaded, execute the command below:
 
 ```bash
