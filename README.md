@@ -1,4 +1,126 @@
 
+# Insurance Advisor
+
+A brief description of what this project does and who it's for
+
+The Simple Insurance Advisor is a tool that provides a personal risk profile based on simple questions without any knowledge of the insurance business.
+
+This tool was built in Java 11 on top of Spring boot framework version 2.5.2.
+
+The application is organized in layers. The controller layer receives the input and invokes the business layer which applies the required rules in order to calculate the insurance score and to build the risk profile for a given user.
+
+
+## Installation
+
+**System requirements**
+
+Java 11 
+
+Maven 3.8.1
+
+**Respository**
+
+git clone **https://github.com/decooliveira/insurance-advisor.git 
+
+Optionally, download the code from https://github.com/decooliveira/insurance-advisor and unzip the file
+
+
+Install  with **Maven**
+Once the source code is downloaded, execute the command below:
+
+```bash
+cd insurance-advisor/
+mvn test
+./mvnw install
+./mvnw spring-boot:run
+```
+After few seconds, you will be able to see the message “Completed initialization” in your terminal.
+```bash
+2021-07-19 16:52:56.483 INFO 30274 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+
+2021-07-19 16:52:56.558 INFO 30274 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 72 ms
+```
+
+
+Install with **Docker** (optional)
+
+```bash
+cd insurance-advisor/
+./mvnw install
+cd my-project
+```
+After maven command completes its execution, build the image with the following command:
+
+
+```bash
+docker build -t insurance/advisor .
+docker run -p 8080:8080 insurance/advisor
+```
+
+## API Reference
+
+#### Calculate the Users Risk Profile
+
+
+
+
+```http
+  POST api/v1/calculate
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `personalInformation`      | `PersonalInformation` | **Required**.  |
+
+
+**Input** (PersonalInformation)
+
+In order to calculate the associate risks and build the user risk profile our tool expects a set of personal information as shown below:
+```bash
+{
+
+"age": 35,
+
+"dependents": 2,
+
+"house": {"ownership_status": "owned"},
+
+"income": 0,
+
+"marital_status": "married",
+
+"risk_questions": [0, 1, 0],
+
+"vehicle": {"year": 2018}
+
+}
+```
+You may receive a bad request error if the attributes were out of accepted values range. 
+
+For example, age should be a value grater or equal to zero.
+
+**Output** (RiskProfile)
+
+After applying all the rules and calculate the risk, a risk profile is returned to the user.
+
+Risk Profile entity has the following structure:
+```bash
+{
+
+"auto": "economic":
+
+"disability": "ineligible",
+
+"home": "regular",
+
+"life": "responsible"
+
+}
+````
+
+You may use Swagger interface in order to send requests to the API. Swagger url: http://localhost:8080/swagger-ui.html
+
+If you prefer, download the Postman client in https://www.postman.com/downloads/
 ## Appendix
 
 **Other components**
