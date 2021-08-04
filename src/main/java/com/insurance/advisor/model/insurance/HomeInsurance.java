@@ -14,8 +14,9 @@ public class HomeInsurance implements Insurance {
 
     private int points;
     private String score;
+    private int id;
 
-    public static HomeInsurance of(int points){
-        return new HomeInsurance(points, Score.get(points).getName());
+    public static HomeInsurance of(int points, int id){
+        return new HomeInsurance(points, Score.get(points).getName(), id);
     }
 }

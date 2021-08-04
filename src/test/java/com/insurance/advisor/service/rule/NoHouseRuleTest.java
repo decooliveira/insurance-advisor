@@ -38,8 +38,8 @@ public class NoHouseRuleTest {
                 .dependents(2)
                 .marital_status(MaritalStatus.married)
                 .income(0)
-                .house(null)
-                .vehicle(vehicle)
+               // .house(null)
+                //.vehicle(vehicle)
                 .risk_questions(riskQuestions)
                 .build();
         insuranceData = InsuranceData.of(personalInformation);

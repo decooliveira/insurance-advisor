@@ -21,7 +21,7 @@ public class PersonalInformation {
 
     @PositiveOrZero(message="For dependents, please provide a value greater or equal to zero")
     private int dependents;
-    private House house;
+    private List<House> houses;
 
     @PositiveOrZero(message="For income, please provide a value greater or equal to zero")
     private int income;
@@ -32,6 +32,6 @@ public class PersonalInformation {
     private List<Integer> risk_questions;
 
     @Valid
-    private Vehicle vehicle;
+    private List<Vehicle> vehicles;
 
 }

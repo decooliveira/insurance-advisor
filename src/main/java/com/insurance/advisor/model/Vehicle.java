@@ -12,8 +12,9 @@ import java.util.Calendar;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Vehicle implements Insurable{
+public class Vehicle implements Insurable, AdditionalParam{
 
+    private int id;
     @Positive(message="For vehicle year, please provide a value greater than zero")
     private int year;
 

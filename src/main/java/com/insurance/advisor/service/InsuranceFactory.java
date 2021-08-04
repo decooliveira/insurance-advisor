@@ -1,5 +1,6 @@
 package com.insurance.advisor.service;
 
+import com.insurance.advisor.model.AdditionalParam;
 import com.insurance.advisor.model.InsurableData;
 import com.insurance.advisor.model.InsuranceType;
 import com.insurance.advisor.model.insurance.Insurance;
@@ -13,9 +14,9 @@ public class InsuranceFactory {
 
     private CalculatorFactory factory;
 
-    public Insurance build(InsuranceType type, InsurableData data) {
+    public Insurance build(InsuranceType type, InsurableData data, AdditionalParam param) {
 
-        return factory.build(type).calculate(data);
+        return factory.build(type).calculate(data, param);
 
     }
 }

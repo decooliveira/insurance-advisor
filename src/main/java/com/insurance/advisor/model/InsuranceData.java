@@ -3,28 +3,33 @@ package com.insurance.advisor.model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.util.Objects.nonNull;
 
 @Data
 @Builder
 public class InsuranceData implements InsurableData {
 
-    private Vehicle vehicle;
-    private House house;
+    private List<Vehicle> vehicles;
+    private List<House> houses;
     private User user;
     private int baseScore;
+    private List<Integer> riskAnswers;
 
     public static InsuranceData of(PersonalInformation personalInformation) {
 
         User user = buildUser(personalInformation);
-        House house = buildHouse(personalInformation);
-        Vehicle vehicle = buildVehicle(personalInformation);
+        List<House> houses = buildHouses(personalInformation);
+        List<Vehicle> vehicles = buildVehicles(personalInformation);
         int baseScore = buildBaseScore(personalInformation);
         return InsuranceData.builder()
-                .vehicle(vehicle)
-                .house(house)
+                .vehicles(vehicles)
+                .houses(houses)
                 .user(user)
                 .baseScore(baseScore)
+                .riskAnswers(personalInformation.getRisk_questions())
                 .build();
     }
 
@@ -37,20 +42,24 @@ public class InsuranceData implements InsurableData {
                 .build();
     }
 
-    private static Vehicle buildVehicle(PersonalInformation personalInformation) {
-        return Vehicle.builder()
-                .year(personalInformation.getVehicle().getYear())
-                .build();
+    private static List<Vehicle> buildVehicles(PersonalInformation personalInformation) {
+        List<Vehicle> vehicles = new ArrayList<>();
+
+        for(Vehicle vehicle:personalInformation.getVehicles()){
+            vehicles.add(vehicle);
+        }
+
+        return vehicles;
     }
 
-    private static House buildHouse(PersonalInformation personalInformation) {
-        if (nonNull(personalInformation.getHouse())
-                && nonNull(personalInformation.getHouse().getOwnership_status())) {
-            return House.builder()
-                    .ownership_status(personalInformation.getHouse().getOwnership_status())
-                    .build();
+    private static List<House> buildHouses(PersonalInformation personalInformation) {
+        List<House> houses = new ArrayList<>();
+        if (nonNull(personalInformation.getHouses()) || !personalInformation.getHouses().isEmpty()){
+            for(House house: personalInformation.getHouses()){
+                houses.add(house);
+            }
         }
-        return null;
+        return houses;
     }
 
     private static int buildBaseScore(PersonalInformation personalInformation) {

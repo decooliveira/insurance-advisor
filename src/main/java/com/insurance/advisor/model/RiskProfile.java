@@ -1,18 +1,19 @@
 package com.insurance.advisor.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.insurance.advisor.model.insurance.Insurance;
+import lombok.*;
+
+import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class RiskProfile {
 
-    private String auto;
+    private List<Insurance> auto;
     private String disability;
-    private String home;
+    private List<Insurance> home;
     private String life;
 }

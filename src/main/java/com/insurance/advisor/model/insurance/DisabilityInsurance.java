@@ -14,8 +14,9 @@ public class DisabilityInsurance implements Insurance {
 
     private int points;
     private String score;
+    int id;
 
-    public static DisabilityInsurance of(int points) {
-        return new DisabilityInsurance(points, Score.get(points).getName());
+    public static DisabilityInsurance of(int points, int id) {
+        return new DisabilityInsurance(points, Score.get(points).getName(), id);
     }
 }

@@ -14,8 +14,9 @@ public class LifeInsurance implements Insurance {
 
     private int points;
     private String score;
+    private int id;
 
-    public static LifeInsurance of(int points){
-        return new LifeInsurance(points, Score.get(points).getName());
+    public static LifeInsurance of(int points, int id){
+        return new LifeInsurance(points, Score.get(points).getName(), id);
     }
 }

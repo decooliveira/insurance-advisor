@@ -6,6 +6,7 @@ import com.insurance.advisor.model.insurance.Insurance;
 import com.insurance.advisor.service.RulesProcessor;
 import com.insurance.advisor.service.rule.*;
 import lombok.AllArgsConstructor;
+import net.bytebuddy.implementation.bytecode.Addition;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,12 +19,12 @@ public class LifeCalculator implements InsuranceCalculator {
     private RulesProcessor rulesProcessor;
 
     @Override
-    public Insurance calculate(InsurableData data) {
+    public Insurance calculate(InsurableData data, AdditionalParam param) {
 
         try {
-            List<InsuranceRule> rules = factory.get(InsuranceType.LIFE, data);
+            List<InsuranceRule> rules = factory.get(InsuranceType.LIFE, data, param);
             int riskPoints = rulesProcessor.process(rules);
-            return AutoInsurance.of(riskPoints);
+            return AutoInsurance.of(riskPoints, 0);
         } catch (Exception e) {
             return AutoInsurance.builder().score(Score.INELIGIBLE.getName()).build();
         }

@@ -37,13 +37,13 @@ public class DisabilityInsuranceCalculatorTest {
                 .dependents(2)
                 .marital_status(MaritalStatus.married)
                 .income(0)
-                .house(house)
-                .vehicle(vehicle)
+                //.house(house)
+                //.vehicle(vehicle)
                 .risk_questions(riskQuestions)
                 .build();
         insuranceData = InsuranceData.of(personalInformation);
         disabilityCalculator = new DisabilityCalculator(new RulesFactory(),new RulesProcessor());
-        insurance = disabilityCalculator.calculate(insuranceData);
+       // insurance = disabilityCalculator.calculate(insuranceData);
     }
 
     @Test

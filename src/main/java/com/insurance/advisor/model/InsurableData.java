@@ -1,8 +1,11 @@
 package com.insurance.advisor.model;
 
+import java.util.List;
+
 public interface InsurableData {
-    Vehicle getVehicle();
+    List<Vehicle> getVehicles();
     User getUser();
-    House getHouse();
+    List<House> getHouses();
     int getBaseScore();
+    List<Integer> getRiskAnswers();
 }

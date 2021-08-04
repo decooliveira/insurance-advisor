@@ -14,8 +14,9 @@ public class AutoInsurance implements Insurance{
 
     private int points;
     private String score;
+    private int id;
 
-    public static AutoInsurance of(int points){
-        return new AutoInsurance(points, Score.get(points).getName());
+    public static AutoInsurance of(int points, int id){
+        return new AutoInsurance(points, Score.get(points).getName(),id);
     }
 }

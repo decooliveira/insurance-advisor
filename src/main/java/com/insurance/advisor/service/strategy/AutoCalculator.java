@@ -1,8 +1,6 @@
 package com.insurance.advisor.service.strategy;
 
-import com.insurance.advisor.model.InsurableData;
-import com.insurance.advisor.model.InsuranceType;
-import com.insurance.advisor.model.Score;
+import com.insurance.advisor.model.*;
 import com.insurance.advisor.model.insurance.AutoInsurance;
 import com.insurance.advisor.model.insurance.Insurance;
 import com.insurance.advisor.service.RulesProcessor;
@@ -21,12 +19,13 @@ public class AutoCalculator implements InsuranceCalculator {
     private RulesFactory factory;
     private RulesProcessor rulesProcessor;
 
-    public Insurance calculate(InsurableData data) {
+    public Insurance calculate(InsurableData data, AdditionalParam param) {
 
         try {
-            List<InsuranceRule> rules = factory.get(InsuranceType.AUTO, data);
+            List<InsuranceRule> rules = factory.get(InsuranceType.AUTO, data,param);
             int riskPoints = rulesProcessor.process(rules);
-            return AutoInsurance.of(riskPoints);
+            Vehicle vehicle = (Vehicle) param;
+            return AutoInsurance.of(riskPoints,vehicle.getId());
         } catch (Exception e) {
             return AutoInsurance.builder().score(Score.INELIGIBLE.getName()).build();
         }

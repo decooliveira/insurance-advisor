@@ -35,8 +35,8 @@ public class AgeRangeRuleTest {
                 .dependents(2)
                 .marital_status(MaritalStatus.married)
                 .income(0)
-                .house(house)
-                .vehicle(vehicle)
+               // .house(house)
+               // .vehicle(vehicle)
                 .risk_questions(riskQuestions)
                 .build();
         insuranceData = InsuranceData.of(personalInformation);

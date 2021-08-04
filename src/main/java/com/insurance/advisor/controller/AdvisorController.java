@@ -19,12 +19,12 @@ public class AdvisorController {
 
     private RiskCalculator riskCalculator;
 
-
     @PostMapping("calculate")
     @ResponseBody
     public ResponseEntity<RiskProfile> calculate(@Valid @RequestBody PersonalInformation personalInformation) {
 
-        RiskProfile riskProfile = riskCalculator.run(personalInformation);
+        RiskProfile riskProfile = riskCalculator.calculate(personalInformation);
         return new ResponseEntity<>(riskProfile, HttpStatus.OK);
     }
+
 }
