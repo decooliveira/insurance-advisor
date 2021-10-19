@@ -1,7 +1,7 @@
 
-# Insurance Advisor
+# Origin Code Challenge | Insurance Advisor 
 
-A brief description of what this project does and who it's for
+This is a project created for Origin (useorigin.com) code challenge.
 
 The Simple Insurance Advisor is a tool that provides a personal risk profile based on simple questions without any knowledge of the insurance business.
 
